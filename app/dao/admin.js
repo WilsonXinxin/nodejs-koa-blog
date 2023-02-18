@@ -1,7 +1,7 @@
 /**
  * @description 管理员的数据访问对象
  * @description Data Access Objects for Administrators
- * @author 梁凤波, Peter Liang
+ * @author Wilson, Peter Liang
  */
 
 const { Admin } = require('@models/admin')
@@ -52,18 +52,17 @@ class AdminDao {
           email
         }
       })
-
+      
       if (!admin) {
         throw new global.errs.AuthFailed('账号不存在')
       }
 
       // 验证密码是否正确
       const correct = bcrypt.compareSync(plainPassword, admin.password);
-
+      
       if (!correct) {
         throw new global.errs.AuthFailed('账号不存在或者密码不正确')
       }
-
       return [null, admin]
     } catch (err) {
       return [err, null]

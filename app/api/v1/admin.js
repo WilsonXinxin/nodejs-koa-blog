@@ -1,7 +1,7 @@
 /**
  * @description 管理员的路由 API 接口
  * @description Administrator's routing API interface
- * @author 梁凤波, Peter Liang
+ * @author Wilson, Peter Liang
  */
 
 const Router = require('koa-router')
@@ -29,6 +29,7 @@ router.post('/register', async (ctx) => {
   const v = await new RegisterValidator().validate(ctx);
 
   // 创建管理员
+  console.log(ctx);
   const [err, data] = await AdminDao.create({
     email: v.get('body.email'),
     password: v.get('body.password2'),

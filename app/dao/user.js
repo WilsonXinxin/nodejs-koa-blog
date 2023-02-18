@@ -1,7 +1,7 @@
 /**
  * @description 用户的数据访问对象
  * @description Data Access Objects for Useristrators
- * @author 梁凤波, Peter Liang
+ * @author Wilson, Peter Liang
  */
 const { Op } = require('sequelize')
 const { User } = require('@models/user')
@@ -58,6 +58,7 @@ class UserDao {
 
       // 验证密码是否正确
       const correct = bcrypt.compareSync(plainPassword, user.password);
+
       if (!correct) {
         throw new global.errs.AuthFailed('账号不存在或者密码不正确')
       }

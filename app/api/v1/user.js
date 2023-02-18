@@ -1,6 +1,6 @@
 /**
  * @description 用户的路由 API 接口
- * @author 梁凤波, Peter Liang
+ * @author Wilson, Peter Liang
  */
 
 const Router = require('koa-router')
@@ -60,7 +60,7 @@ router.post('/register', async (ctx) => {
 // 管理登录
 router.post('/login', async (ctx) => {
 
-    const v = await new UserLoginValidator().validate(ctx);
+    const v = await new UserLoginValidator().validate(ctx);    
 
     let [err, token, id] = await LoginManager.userLogin({
         email: v.get('body.email'),
